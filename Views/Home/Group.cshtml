@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "About";
+    var subjectList = ViewData["SubjectList"] as IList<Subject>;
+    var studMark = ViewData["StudMarks"] as IList<StudentSubjectMark>;
+    var markISB = ViewData["MarkISB"] as IList<Mark>;
+}
+<div>
+    <table class="table ">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                @foreach (var i in subjectList)
+                {
+                    <th>@i.Name</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in ViewData["Group"] as IList<Student>)
+            {
+            <tr>
+                <th>@i.ID</th>
+                <td><a asp-controller="Home" asp-action="Student" asp-route-studentId="@i.ID">@i.FirstName @i.SecondName</a></td>
+                @foreach (var s in studMark)
+                {
+                    if (s.StudentId == i.ID && s.SubjectId == 1)
+                    {
+                        <td>@markISB.Where(c => c.ID == s.MarkId).Select(c => c.Sign).SingleOrDefault()</td>
+                    }
+                    if (s.StudentId == i.ID && s.SubjectId == 2)
+                    {
+                        <td>@markISB.Where(c => c.ID == s.MarkId).Select(c => c.Sign).SingleOrDefault()</td>
+                    }
+                    if (s.StudentId == i.ID && s.SubjectId == 3)
+                    {
+                        <td>@markISB.Where(c => c.ID == s.MarkId).Select(c => c.Sign).SingleOrDefault()</td>
+                    }
+                    if (s.StudentId == i.ID && s.SubjectId==4)
+                    {
+                        <td>@markISB.Where(c=>c.ID == s.MarkId).Select(c=>c.Sign).SingleOrDefault()</td>
+                    }
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

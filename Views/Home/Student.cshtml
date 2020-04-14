@@ -1,0 +1,11 @@
+﻿@{ 
+    ViewData["Title"] = "Student";
+}
+@{ var student = ViewData["Student"] as Student;}
+@{ var group = ViewData["Group"] as Group;}
+<div>
+    <h4>@student.FirstName @student.SecondName</h4>
+    <div>Major: @student.Major</div>
+    <div>Date Of Birth: @student.DateOfBirth</div>
+    <div>Group: @group.Name</div>
+</div>
